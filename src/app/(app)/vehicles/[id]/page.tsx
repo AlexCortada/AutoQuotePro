@@ -41,7 +41,7 @@ export default function VehicleDetailPage({ params }: { params: { id: string } }
                     <CardTitle>Vehicle Details</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                    <p><Badge variant="secondary">{vehicle.licensePlate}</Badge></p>
+                    <div><Badge variant="secondary">{vehicle.licensePlate}</Badge></div>
                     <p className="text-sm"><strong>VIN:</strong> {vehicle.vin}</p>
                     <p className="text-sm"><strong>Mileage:</strong> {vehicle.currentMileage.toLocaleString()} mi</p>
                 </CardContent>
