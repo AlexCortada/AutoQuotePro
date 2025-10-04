@@ -64,19 +64,21 @@ export default function CustomerDetailPage({ params }: { params: { id: string } 
             <CardContent>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {customerVehicles.map((vehicle) => (
-                  <Card key={vehicle.id}>
-                    <CardHeader>
-                      <CardTitle className="flex items-center justify-between">
-                        {vehicle.nickname}
-                        <Badge variant="secondary">{vehicle.licensePlate}</Badge>
-                      </CardTitle>
-                      <CardDescription>{vehicle.year} {vehicle.make} {vehicle.model}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">VIN: {vehicle.vin}</p>
-                      <p className="text-sm text-muted-foreground">Mileage: {vehicle.currentMileage.toLocaleString()}</p>
-                    </CardContent>
-                  </Card>
+                  <Link key={vehicle.id} href={`/vehicles/${vehicle.id}`} className="block hover:bg-muted/50 rounded-lg">
+                    <Card className="h-full">
+                      <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                          {vehicle.nickname}
+                          <Badge variant="secondary">{vehicle.licensePlate}</Badge>
+                        </CardTitle>
+                        <CardDescription>{vehicle.year} {vehicle.make} {vehicle.model}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground">VIN: {vehicle.vin}</p>
+                        <p className="text-sm text-muted-foreground">Mileage: {vehicle.currentMileage.toLocaleString()}</p>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
                  <Button variant="outline" className="h-full flex flex-col items-center justify-center gap-2 border-dashed">
                   <PlusCircle className="h-8 w-8 text-muted-foreground" />
