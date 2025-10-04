@@ -75,7 +75,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </SidebarMenuItem>
              <SidebarMenuItem>
               <SidebarMenuButton href="/quotes" asChild>
-                <Link href="/quotes/new">
+                <Link href="/quotes">
                   <FileText />
                   Quotes & Invoices
                 </Link>

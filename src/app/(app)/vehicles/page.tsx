@@ -8,10 +8,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 
-export default function VehiclesPage() {
+export default function VehiclesPage({ searchParams }: { searchParams?: { [key: string]: string | string[] | undefined }}) {
   const getCustomerName = (customerId: string) => {
     return customers.find(c => c.id === customerId)?.name || 'N/A';
   }
+
+  // A real implementation would fetch this from a DB
+  const inProgressVehicleIds = ['102', '103'];
+
+  const filteredVehicles = searchParams?.status === 'in-progress'
+    ? vehicles.filter(v => inProgressVehicleIds.includes(v.id))
+    : vehicles;
 
   return (
     <>
@@ -36,11 +43,13 @@ export default function VehiclesPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {vehicles.map((vehicle) => (
+              {filteredVehicles.map((vehicle) => (
                 <TableRow key={vehicle.id}>
                   <TableCell>
-                    <div className="font-medium">{vehicle.nickname}</div>
-                    <Badge variant="outline" className="mt-1 font-mono">{vehicle.licensePlate}</Badge>
+                    <Link href={`/vehicles/${vehicle.id}`} className="block group">
+                      <div className="font-medium group-hover:underline">{vehicle.nickname}</div>
+                      <Badge variant="outline" className="mt-1 font-mono">{vehicle.licensePlate}</Badge>
+                    </Link>
                   </TableCell>
                   <TableCell className="hidden sm:table-cell">{vehicle.year} {vehicle.make} {vehicle.model}</TableCell>
                   <TableCell className="hidden md:table-cell">
