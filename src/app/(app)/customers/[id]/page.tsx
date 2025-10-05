@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { customers, vehicles, invoices } from "@/lib/data";
 import { notFound } from "next/navigation";
@@ -6,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Car, FileText, Mail, Phone, PlusCircle, User, StickyNote, ArrowUpRight } from "lucide-react";
+import { Car, FileText, Mail, Phone, PlusCircle, User, StickyNote, ArrowUpRight, Edit } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 
@@ -41,12 +42,18 @@ export default function CustomerDetailPage({ params }: { params: { id: string } 
             </p>
           </div>
         </div>
-        <Button asChild>
-          <Link href="/quotes/new">
-            <PlusCircle className="mr-2 h-4 w-4" />
-            New Quote
-          </Link>
-        </Button>
+        <div className="flex items-center gap-2">
+            <Button variant="outline">
+                <Edit className="mr-2 h-4 w-4"/>
+                Edit Customer
+            </Button>
+            <Button asChild>
+            <Link href="/quotes/new">
+                <PlusCircle className="mr-2 h-4 w-4" />
+                New Quote
+            </Link>
+            </Button>
+        </div>
       </div>
 
       <Tabs defaultValue="vehicles">

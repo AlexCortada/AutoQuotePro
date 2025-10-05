@@ -1,5 +1,6 @@
+
 import Link from "next/link";
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, Edit } from "lucide-react";
 import { customers, vehicles } from "@/lib/data";
 
 import { PageHeader } from "@/components/page-header";
@@ -54,9 +55,15 @@ export default function CustomersPage() {
                     <div className="text-sm text-muted-foreground">{customer.phone}</div>
                   </TableCell>
                   <TableCell className="text-center hidden sm:table-cell">{getVehicleCount(customer.id)}</TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right space-x-2">
                     <Button variant="outline" size="sm" asChild>
                       <Link href={`/customers/${customer.id}`}>View</Link>
+                    </Button>
+                     <Button variant="outline" size="sm" asChild>
+                      <Link href={`/customers/${customer.id}`}>
+                        <Edit className="h-3 w-3" />
+                        <span className="sr-only">Edit</span>
+                      </Link>
                     </Button>
                   </TableCell>
                 </TableRow>
