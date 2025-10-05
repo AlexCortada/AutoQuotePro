@@ -43,9 +43,11 @@ export default function CustomerDetailPage({ params }: { params: { id: string } 
           </div>
         </div>
         <div className="flex items-center gap-2">
-            <Button variant="outline">
-                <Edit className="mr-2 h-4 w-4"/>
-                Edit Customer
+            <Button variant="outline" asChild>
+                <Link href={`/customers/${customer.id}/edit`}>
+                    <Edit className="mr-2 h-4 w-4"/>
+                    Edit Customer
+                </Link>
             </Button>
             <Button asChild>
             <Link href="/quotes/new">

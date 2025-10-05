@@ -60,7 +60,7 @@ export default function CustomersPage() {
                       <Link href={`/customers/${customer.id}`}>View</Link>
                     </Button>
                      <Button variant="outline" size="sm" asChild>
-                      <Link href={`/customers/${customer.id}`}>
+                      <Link href={`/customers/${customer.id}/edit`}>
                         <Edit className="h-3 w-3" />
                         <span className="sr-only">Edit</span>
                       </Link>
