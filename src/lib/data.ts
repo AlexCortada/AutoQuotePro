@@ -1,3 +1,4 @@
+
 import type { Customer, Vehicle, CatalogItem, Invoice } from '@/lib/types';
 
 export const customers: Customer[] = [
