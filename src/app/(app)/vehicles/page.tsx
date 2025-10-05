@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PlusCircle } from "lucide-react";
 import { vehicles, customers } from "@/lib/data";
 
@@ -36,6 +37,9 @@ export default function VehiclesPage({ searchParams }: { searchParams?: { [key: 
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="w-[100px] hidden sm:table-cell">
+                  <span className="sr-only">Image</span>
+                </TableHead>
                 <TableHead>Nickname / Plate</TableHead>
                 <TableHead className="hidden sm:table-cell">Vehicle</TableHead>
                 <TableHead className="hidden md:table-cell">Owner</TableHead>
@@ -45,6 +49,18 @@ export default function VehiclesPage({ searchParams }: { searchParams?: { [key: 
             <TableBody>
               {filteredVehicles.map((vehicle) => (
                 <TableRow key={vehicle.id}>
+                  <TableCell className="hidden sm:table-cell">
+                    <Link href={`/vehicles/${vehicle.id}`}>
+                      <Image
+                        alt="Vehicle image"
+                        className="aspect-square rounded-md object-cover"
+                        height="64"
+                        src={`https://picsum.photos/seed/${vehicle.id}/64/64`}
+                        width="64"
+                        data-ai-hint="car photo"
+                      />
+                    </Link>
+                  </TableCell>
                   <TableCell>
                     <Link href={`/vehicles/${vehicle.id}`} className="block group">
                       <div className="font-medium group-hover:underline">{vehicle.nickname}</div>
