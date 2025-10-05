@@ -89,9 +89,11 @@ export default function CustomerDetailPage({ params }: { params: { id: string } 
                     </Card>
                   </Link>
                 ))}
-                 <Button variant="outline" className="h-full flex flex-col items-center justify-center gap-2 border-dashed">
-                  <PlusCircle className="h-8 w-8 text-muted-foreground" />
-                  <span className="text-muted-foreground">Add New Vehicle</span>
+                 <Button variant="outline" className="h-full flex flex-col items-center justify-center gap-2 border-dashed" asChild>
+                  <Link href={`/customers/${customer.id}/vehicles/new`}>
+                    <PlusCircle className="h-8 w-8 text-muted-foreground" />
+                    <span className="text-muted-foreground">Add New Vehicle</span>
+                  </Link>
                 </Button>
               </div>
             </CardContent>
