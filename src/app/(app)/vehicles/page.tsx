@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import Image from "next/image";
 import { PlusCircle } from "lucide-react";
@@ -41,8 +42,8 @@ export default function VehiclesPage({ searchParams }: { searchParams?: { [key: 
                   <span className="sr-only">Image</span>
                 </TableHead>
                 <TableHead>Nickname / Plate</TableHead>
-                <TableHead className="hidden sm:table-cell">Vehicle</TableHead>
                 <TableHead className="hidden md:table-cell">Owner</TableHead>
+                <TableHead className="hidden sm:table-cell">Vehicle</TableHead>
                 <TableHead className="text-right">Mileage</TableHead>
               </TableRow>
             </TableHeader>
@@ -67,12 +68,12 @@ export default function VehiclesPage({ searchParams }: { searchParams?: { [key: 
                       <Badge variant="outline" className="mt-1 font-mono">{vehicle.licensePlate}</Badge>
                     </Link>
                   </TableCell>
-                  <TableCell className="hidden sm:table-cell">{vehicle.year} {vehicle.make} {vehicle.model}</TableCell>
                   <TableCell className="hidden md:table-cell">
                     <Link href={`/customers/${vehicle.clientId}`} className="hover:underline">
                       {getCustomerName(vehicle.clientId)}
                     </Link>
                   </TableCell>
+                  <TableCell className="hidden sm:table-cell">{vehicle.year} {vehicle.make} {vehicle.model}</TableCell>
                   <TableCell className="text-right font-mono">{vehicle.currentMileage.toLocaleString()} mi</TableCell>
                 </TableRow>
               ))}
