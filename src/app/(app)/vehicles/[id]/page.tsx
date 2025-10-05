@@ -1,4 +1,6 @@
+
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { vehicles, customers, invoices } from "@/lib/data";
 import { PageHeader } from "@/components/page-header";
@@ -6,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { FileText, PlusCircle, StickyNote, Wrench } from "lucide-react";
+import { FileText, PlusCircle, StickyNote, Wrench, Edit, Camera } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -26,6 +28,12 @@ export default function VehicleDetailPage({ params }: { params: { id: string } }
         title={vehicle.nickname}
         description={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
       >
+        <Button variant="outline" asChild>
+            <Link href={`/vehicles/${vehicle.id}/edit`}>
+                <Edit className="mr-2 h-4 w-4"/>
+                Edit Vehicle
+            </Link>
+        </Button>
         <Button asChild>
             <Link href="/quotes/new">
                 <PlusCircle className="mr-2 h-4 w-4" />
@@ -36,6 +44,20 @@ export default function VehicleDetailPage({ params }: { params: { id: string } }
 
       <div className="grid gap-8 md:grid-cols-3">
         <div className="md:col-span-1 space-y-8">
+            <Card>
+                <CardHeader>
+                    <CardTitle>Vehicle Image</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="aspect-video bg-muted rounded-md mb-4 flex items-center justify-center">
+                    <Image src={`https://picsum.photos/seed/${vehicle.id}/600/400`} alt={`${vehicle.make} ${vehicle.model}`} width={600} height={400} className="rounded-md" data-ai-hint="car photo" />
+                  </div>
+                  <Button variant="outline" className="w-full">
+                    <Camera className="mr-2 h-4 w-4" />
+                    Add Photo
+                  </Button>
+                </CardContent>
+            </Card>
             <Card>
                 <CardHeader>
                     <CardTitle>Vehicle Details</CardTitle>
